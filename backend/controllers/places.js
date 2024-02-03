@@ -105,7 +105,7 @@ router.post('/:placeId/comments', async (req, res) => {
     }
 
     if (!req.currentUser) {
-        return res.status(404).json({ message: `You must be logged in to leave a rand or rave.` })
+        return res.status(404).json({ message: `You must be logged in to leave a rant or rave.` })
     }
 
     const comment = await Comment.create({
@@ -118,6 +118,7 @@ router.post('/:placeId/comments', async (req, res) => {
         ...comment.toJSON(),
         author: req.currentUser
     })
+    
 })
 
 router.delete('/:placeId/comments/:commentId', async (req, res) => {
